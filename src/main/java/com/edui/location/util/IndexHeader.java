@@ -7,8 +7,8 @@ import java.nio.charset.StandardCharsets;
 /**
  * 文件头保存的数据
  *
- * @Author edui
- * @Date 2022/7/4
+ * @author edui
+ * @date 2022/7/4
  */
 public class IndexHeader {
 

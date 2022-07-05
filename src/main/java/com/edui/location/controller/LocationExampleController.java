@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author edui
- * @Date 2022/7/4
+ * @author edui
+ * @date 2022/7/4
  **/
 @RestController
 public class LocationExampleController {
@@ -26,7 +26,7 @@ public class LocationExampleController {
     }
 
     @GetMapping("/phoneLocation")
-    public String phoneLocation(String phone){
+    public String phoneLocation(String phone) throws Exception {
         return phoneMemoryIndex.findPhoneAddr(phone);
     }
 

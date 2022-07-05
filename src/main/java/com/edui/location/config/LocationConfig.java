@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 /**
- * @Author edui
- * @Date 2022/7/4
+ * @author edui
+ * @date 2022/7/4
  **/
 @Configuration
 public class LocationConfig {
