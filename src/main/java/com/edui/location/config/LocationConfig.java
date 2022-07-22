@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 /**
  * @author edui
  * @date 2022/7/4
@@ -14,12 +18,24 @@ public class LocationConfig {
 
     @Bean("ipLocation")
     public MemoryIndex getIpLocationMemoryIndex() throws Exception {
-        return new MemoryIndex(new ClassPathResource("db"+System.getProperty("file.separator")+"ipv4data.db").getURL().getPath());
+        File tempFile = File.createTempFile("indexFile",".db");
+        FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
+        InputStream sourceInputStream = new ClassPathResource("db"+System.getProperty("file.separator")+"ipv4data.db").getInputStream();
+        fileOutputStream.write(sourceInputStream.readAllBytes());
+        MemoryIndex memoryIndex =  new MemoryIndex(tempFile.getPath());
+        tempFile.deleteOnExit();
+        return memoryIndex;
     }
 
     @Bean("phoneLocation")
     public MemoryIndex getPhoneLocationMemoryIndex() throws Exception {
-        return new MemoryIndex(new ClassPathResource("db"+System.getProperty("file.separator")+"phonedata.db").getURL().getPath());
+        File tempFile = File.createTempFile("indexFile",".db");
+        FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
+        InputStream sourceInputStream = new ClassPathResource("db"+System.getProperty("file.separator")+"phonedata.db").getInputStream();
+        fileOutputStream.write(sourceInputStream.readAllBytes());
+        MemoryIndex memoryIndex =  new MemoryIndex(tempFile.getPath());
+        tempFile.deleteOnExit();
+        return memoryIndex;
     }
 
 }

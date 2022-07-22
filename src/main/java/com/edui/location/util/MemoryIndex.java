@@ -139,7 +139,7 @@ public class MemoryIndex {
      */
     public String findPhoneAddr(String phone) throws Exception{
         //号码的前七位为号段
-        if(phone == null || phone.length() != 7){
+        if(phone == null || phone.length() < 7){
             throw new Exception("not supported phone");
         }
         String prefix = phone.substring(0,7);
