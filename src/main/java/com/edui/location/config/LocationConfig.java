@@ -18,22 +18,24 @@ public class LocationConfig {
 
     @Bean("ipLocation")
     public MemoryIndex getIpLocationMemoryIndex() throws Exception {
-        File tempFile = File.createTempFile("indexFile",".db");
-        FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
-        InputStream sourceInputStream = new ClassPathResource("db"+System.getProperty("file.separator")+"ipv4data.db").getInputStream();
-        fileOutputStream.write(sourceInputStream.readAllBytes());
-        MemoryIndex memoryIndex =  new MemoryIndex(tempFile.getPath());
+        File tempFile = File.createTempFile("indexFile", ".db");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
+             InputStream sourceInputStream = new ClassPathResource("db" + System.getProperty("file.separator") + "ipv4data.db").getInputStream()) {
+            fileOutputStream.write(sourceInputStream.readAllBytes());
+        }
+        MemoryIndex memoryIndex = new MemoryIndex(tempFile.getPath());
         tempFile.deleteOnExit();
         return memoryIndex;
     }
 
     @Bean("phoneLocation")
     public MemoryIndex getPhoneLocationMemoryIndex() throws Exception {
-        File tempFile = File.createTempFile("indexFile",".db");
-        FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
-        InputStream sourceInputStream = new ClassPathResource("db"+System.getProperty("file.separator")+"phonedata.db").getInputStream();
-        fileOutputStream.write(sourceInputStream.readAllBytes());
-        MemoryIndex memoryIndex =  new MemoryIndex(tempFile.getPath());
+        File tempFile = File.createTempFile("indexFile", ".db");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
+             InputStream sourceInputStream = new ClassPathResource("db" + System.getProperty("file.separator") + "ipv4data.db").getInputStream()) {
+            fileOutputStream.write(sourceInputStream.readAllBytes());
+        }
+        MemoryIndex memoryIndex = new MemoryIndex(tempFile.getPath());
         tempFile.deleteOnExit();
         return memoryIndex;
     }
