@@ -18,7 +18,7 @@
   
   提供spring boot使用示例，开箱即用，还可以构建自己项目所需要的数据，增加或者减少数量量，比如IP定位项目里源数据只提供到省，想做到市级可简单扩展构建。
 
-对应博客[实现IP地址归属地显示功能、号码归属地查询_-edui的博客-CSDN博客](https://blog.csdn.net/I_am_hardy/article/details/125547688)
+对应博客[如何实现评论IP地址归属地功能](https://juejin.cn/editor/drafts/7152012658806358046)
 
 #### 项目运行
 
